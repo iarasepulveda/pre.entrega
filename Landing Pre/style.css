@@ -1,0 +1,815 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden; /*no pasa lo del scrollbar horizontal*/
+}
+
+/* ------------------------- */
+/* TIPOGRAFÍA PERSONALIZADA  */
+/* ------------------------- */
+@font-face {
+  font-family: "Work Sans";
+  src: url("Fuentes/Work_Sans/WorkSans-VariableFont_wght.ttf");
+}
+
+/* ------------------------- */
+/* ESTILOS GENERALES         */
+/* ------------------------- */
+body {
+  background-image: url("imagenes/Portadas/fondodesktop.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Work Sans", sans-serif;
+}
+
+h1, h2, h3, p {
+  font-family: "Work Sans", sans-serif;
+}
+
+h1 {
+  text-align: left;
+  margin-left: 45px;
+  font-size: 60px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 32px;
+  margin: 0;
+}
+
+p {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+a:hover {
+  color: #D744CC;
+  text-decoration: underline;
+}
+
+.titulo-subtitulo {
+  text-align: center;
+  font-size: 48px;
+}
+.titulo-subtitulo p {
+  text-align: left;
+  margin-left: 120px;
+  font-size: 32px;
+}
+
+/* ------------------------- */
+/* HEADER / NAV              */
+/* ------------------------- */
+.header {
+  width: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #f1d7f1e1;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav a {
+  margin-left: 10px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #000;
+}
+
+.logo-img {
+  height: 80px;
+  width: auto;
+}
+
+.icons-redes {
+  height: 130px;
+  width: auto;
+}
+
+.don-cirio {
+  color: #A4579C; /* o el rosa que uses */
+  font-weight: bolder; /* opcional, si querés destacarlo */
+}
+
+
+
+/*SUBTITULO ANTES DEL CTA*/
+
+
+.subtitulo-lineas {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.subtitulo-lineas::before,
+.subtitulo-lineas::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #ca15a3;
+  max-width: 35px;
+  opacity: 0.5;
+}
+
+.subtitulo {
+  font-size: 30px;
+  font-weight: 400;
+  white-space: nowrap; /* evita que el texto se corte a otra línea */
+}
+
+.subtexto {
+  font-size: 30px;
+  font-weight: 400;
+  text-align: left;
+  line-height: 1.4;
+  margin-top: -15px;
+  margin-left: 45px;
+}
+
+/* ------------------------- */
+/* GALERIA MINIATURAS        */
+/* ------------------------- */
+
+.intro {
+  display: flex;
+  justify-content: flex-end; /* Alinea hacia la derecha */
+  align-items: flex-start;
+  gap: 40px;
+  padding: 60px;
+  background-color: #f5e9e9;
+  flex-wrap: wrap;
+}
+
+.izquierda {
+  flex: 1 1 400px;
+}
+
+/* Nuevo contenedor de derecha + curvas */
+.derecha-con-curvas {
+  width: 768px;
+  position: relative;
+}
+/* A VER SI ARREGLO EL SCROLL LOCO*/
+.derecha-con-curvas {
+  position: absolute;
+  top: 155px;
+  right: 47px;
+  width: 768px; /* el ancho que uso en tu contenedor-galeria */
+}
+
+/* Curvas ajustadas al ancho fijo de la galería */
+.curva {
+  width: 900px;
+  height: 39px;
+  background-color: #f5e9e9; 
+  border-radius: 0 0 100% 100% / 0 0 25px 25px;
+  margin-bottom: -20px;
+  position: relative;
+  z-index: 1;
+}
+
+.curva.abajo {
+  transform: rotate(180deg);
+  margin-top: -30px;
+  margin-bottom: 0;
+}
+
+/* Nuevo nombre para el contenedor que oculta el scroll */
+.contenedor-galeria {
+  width: 768px;
+  height: 491px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* GALERIA */
+.galeria-inner {
+  display: flex;
+  height: 491px;
+  width: max-content; /* permite que se expanda seg el contenido */
+  animation: scroll-horizontal 20s linear infinite;
+}
+
+/* IMÁGENES */
+.galeria-inner img {
+  height: 100%;
+  width: auto;
+  margin-right: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+
+/* ANIMACIÓN */
+@keyframes scroll-horizontal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* ------------------------- */
+/* BOTÓN CTA                 */
+/* ------------------------- */
+
+.boton-votar {
+  width: 300px;
+  margin-top: 20px;
+  margin-left: 45px;
+  cursor: pointer;
+}
+
+/*---------------------*/
+/* FORMULARIO POPUP    */
+/*---------------------*/
+/* ---------- POPUP GENERAL ---------- */
+.body-sin-scroll {
+  overflow: hidden;
+}
+
+
+/* Fondo general del popup (overlay) */
+/* Fondo con degrade */
+.popup-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ff99cc, #66ccff);
+  opacity: 0.9;
+  z-index: 1;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Contenedor principal del popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* Contenido visual del formulario */
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: space-between;
+  background-color: #E8E8E8;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 40px 30px;
+  width: 684px;
+  height: 638px;
+  position: relative;
+  z-index: 1;
+
+  background-image:
+    radial-gradient(circle at bottom left, rgba(131, 77, 255, 0.4) 0%, rgba(232, 232, 232, 0) 40%),
+    radial-gradient(circle at bottom right, rgba(251, 0, 205, 0.4) 0%, rgba(232, 232, 232, 0) 40%);
+  background-blend-mode: normal;
+}
+
+
+/* Título */
+.popup-content h2 {
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Etiquetas */
+.popup-content label {
+  display: block;
+  margin-top: 40px;
+  color: black;
+  font-size: 20px;
+  text-align: left;
+}
+
+/* Inputs */
+.popup-content input {
+  width: 450px;
+  padding: 18px;
+  font-size: 20px;
+  font-weight: medium;
+  border-radius: 5px;
+  border: 2px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  color: #000;
+  text-align: center; /* opcional: centrás el texto dentro del input */
+}
+
+/* Botón enviar */
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* o center si preferís */
+}
+
+.popup-content #boton {
+  background: linear-gradient(135deg, #d89fff, #ae6bff);
+  color: black;
+  border: none;
+  border-radius: 8px;
+  width: 110px;
+  height: 45px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: block;
+
+  /* Posicionar abajo a la derecha dentro del popup */
+  align-self: flex-end;
+  margin-top: auto;
+}
+
+
+
+.popup-content #boton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(168, 100, 255, 0.5);
+}
+
+/* Botón cerrar */
+.cerrar-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: black;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Feedback */
+#feedback {
+  margin-top: 1px;
+  text-align: center;
+  color: #000;
+  font-weight: medium;
+  font-size: 20px;
+}
+
+/* Clase oculto */
+.oculto {
+  display: none;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 0.9; }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+/* ------------------------- */
+/* SECCIÓN: BULLETS (details) */
+/* ------------------------- */
+.bullet-titulo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  position: relative;
+}
+
+.bullet-titulo-wrapper::before,
+.bullet-titulo-wrapper::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background-color: #ca15a3;
+  max-width: 298px;
+  opacity: 0.5;
+}
+
+.bullet-titulo {
+  font-size: 42px;
+  font-weight: bold;
+  color: #000000;
+  white-space: nowrap; /* evita que se rompa en 2 líneas */
+}
+
+
+.bullets-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(282px, 566px));
+  gap: 65px 76px; /*row-gap y column-gap*/
+  padding: 40px 60px;
+  text-align: center;
+  justify-content: center; /* centra las columnas si hay espacio */
+}
+
+
+.bullet {
+  position: relative;
+  background-color: #E8E8E8; /* color base */
+  border-radius: 12px;
+  padding: 60px 20px 30px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  
+  /* degradados radiales en las esquinas inferiores con opacidad 40% */
+  background-image:
+    radial-gradient(circle at bottom left, rgba(131, 77, 255, 0.4) 0%, rgba(74, 73, 73, 0) 40%),
+    radial-gradient(circle at bottom right, rgba(251, 0, 205, 0.4) 0%, rgba(74, 73, 73, 0) 40%);
+}
+
+
+.bullet-icon {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 94px;
+  height: 94px;
+}
+
+.bullet h3 {
+  font-size: 46px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.bullet p {
+  font-size: 26px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.divider {
+  margin: 0 auto 20px;
+  width: 100%;
+  max-width: 500px;
+  height: 2px;
+  border-radius: 2px;
+  background: radial-gradient(circle, #3717EF 0%, #ED33F6 100%);
+}
+
+
+/*SEGUN TORTUGAS SELLOS Y DEGRADES + IMGS*/
+.card {
+  position: relative;
+  width: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: center;
+  color: rgb(0, 255, 13);
+  margin: 1rem;
+  padding-bottom: 1rem;
+}
+
+
+.sello {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 10px;
+  height: 10px; /* añadí esto */
+  object-fit: contain; /* mantiene proporción del sello dentro del espacio */
+  transform: rotate(-15deg);
+  transform-origin: top left;
+  z-index: 10;
+  opacity: 0.92;
+}
+
+/* Nombre */
+.card p {
+  margin-top: 0.5rem;
+  align-items: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+
+
+/* ------------------------- */
+/* CARROUSEL GENERAL SEG TORTUGAS*/
+/* ------------------------- */
+/* ESTILOS GENERALES PARA CARD */
+/* ------------------------- */
+.card {
+  position: relative;
+  flex: 0 0 calc((100vw - 120px - 60px) / 3); /* ancho responsivo para carrusel */
+  border-radius: 12px; 
+  overflow: hidden;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  margin: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 6px rgb(240, 234, 239);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  width: auto; /* para no chocar con flex */
+}
+
+.card img {
+  width: 90%;
+  height: 500px; /* altura fija para imágenes */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Efecto hover para card */
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: 4px 4px 12px rgb(0, 0, 0);
+}
+
+/* ------------------------- */
+/* SELLO EN LA CARD */
+/* ------------------------- */
+.sello {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 6px;
+  height: 6px;
+  object-fit: contain;
+  transform: rotate(-15deg);
+  transform-origin: top left;
+  z-index: 10;
+  opacity: 0.92;
+}
+
+/* ------------------------- */
+/* DEGRADADOS SEGÚN TIPO DE CARD */
+/* ------------------------- */
+.card.amado {
+  background: linear-gradient(180deg, #e9e7e8, #7b2cbf);
+  color: white; /* 7b2cbfpara que contraste mejor sobre el degradado */
+}
+
+.card.odiado {
+  background: linear-gradient(180deg, #e9e7e8, #d00);
+  color: white;
+}
+
+/* ------------------------- */
+/* ESTILO PARA EL TEXTO DENTRO DE LA CARD */
+/* ------------------------- */
+.card p {
+  margin-top: 0.5rem;
+  font-size: 36px;
+  font-weight: bold;
+  color: inherit; /* hereda color de .card para mantener consistencia */
+  text-shadow: 1px 1px 2px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ------------------------- */
+/* CARRUSEL GENERAL SEG TORTUGAS */
+/* ------------------------- */
+.carrousel {
+  margin: 100px auto;
+  padding: 30px 60px;
+  overflow: hidden;
+  width: 95%;
+  box-sizing: border-box;
+}
+
+.carrousel-inner {
+  display: flex;
+  gap: 40px; /* espacio entre cards */
+  animation: scrollCarrousel 30s linear infinite;
+  width: fit-content;
+}
+
+/* Pausa animación al hover */
+.carrousel:hover .carrousel-inner {
+  animation-play-state: paused;
+}
+
+
+@keyframes scrollCarrousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ------------------------- */
+/* QUIÉNES SON CARDS         */
+/* ------------------------- */
+
+.cards-horizontal {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: space-evenly;
+  margin: 20px;
+  border-radius: 10px;
+  padding: 20px;
+  gap: 20px; /* Espacio entre tarjetas */
+}
+
+/* Cada tarjeta */
+.card-q {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(185, 11, 162, 0.438);
+}
+
+/* Imagen de cada persona */
+.card-q img {
+  height: 200px;
+  width: auto;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+/* Contenido de texto de la tarjeta */
+.card-info {
+  max-width: 300px;
+}
+
+.card-info h3 {
+  margin-top: 0;
+}
+
+
+/* ------------------------- */
+/* FOOTER                    */
+/* ------------------------- */
+footer {
+  margin-top: 80px;
+  padding: 20px;
+  text-align: center;
+  background-color: #f5e9e9;
+  font-size: 18px;
+}
+
+/*MEDIA QUERIES DAFUWWK*/
+/* Teléfonos (hasta 600px) */
+@media screen and (max-width: 600px) {
+
+  h1 {
+    font-size: 36px;
+    margin-left: 20px;
+    text-align: center; /* si querés centrarlo en móvil */
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 18px;
+    margin: 6px 0;
+  }
+
+  .titulo-subtitulo {
+    font-size: 32px;
+  }
+
+  .titulo-subtitulo p {
+    font-size: 20px;
+    margin-left: 20px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .nav a {
+    margin: 0 5px;
+  }
+
+  .intro {
+    flex-direction: column;
+    padding: 30px 20px;
+    align-items: center;
+  }
+
+  .izquierda, .derecha-con-curvas, .contenedor-galeria {
+    width: 100% !important;
+    position: static;
+  }
+
+  .galeria-inner {
+    height: auto;
+  }
+
+  .galeria-inner img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .subtexto {
+    font-size: 18px;
+    margin-left: 20px;
+    margin-top: 10px;
+  }
+
+  .boton-votar {
+    width: 200px;
+    margin-left: 20px;
+  }
+
+  .popup-content {
+    width: 90%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .popup-content input {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .popup-content #boton {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .bullets-container {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 40px;
+  }
+
+  .bullet h3 {
+    font-size: 28px;
+  }
+
+  .bullet p {
+    font-size: 18px;
+  }
+
+  .carrousel-inner {
+    flex-direction: column;
+    animation: none;
+  }
+
+  .card {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
